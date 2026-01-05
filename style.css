@@ -1,0 +1,592 @@
+/* 1. Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Geist', sans-serif;
+    overflow-x: hidden;
+    
+    /* Mencegah teks di-block/highlight */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* 2. Navbar Section */
+.navbar {
+    padding: 0 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px; 
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    z-index: 10;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.75rem; 
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: 0.3s;
+    white-space: nowrap; 
+}
+
+.nav-links a:hover { opacity: 1; }
+
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 0;
+}
+
+.nav-logo img {
+    height: 120px; 
+    width: auto;
+    display: block;
+    -webkit-user-drag: none;
+    filter: brightness(0) invert(1) !important;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2px;
+    background-color: #ffffff !important;
+    transition: 0.4s;
+}
+
+/* 5. Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 5% 10vh 5%;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)), url('assets/digerati1.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1.2s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.hero-content.show { opacity: 1; transform: translateY(0); }
+
+.hero-title { 
+    font-size: clamp(2.2rem, 5vw, 4rem); 
+    line-height: 1.1; 
+    margin-bottom: 1.2rem; 
+    font-weight: 400; 
+    letter-spacing: -0.05em; 
+}
+
+.italic-font { 
+    font-family: 'Instrument Serif', serif; 
+    font-style: italic;
+    letter-spacing: -0.02em; 
+}
+
+.hero-description { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 450px; }
+
+/* --- 5.5 About Us Section --- */
+.about-section {
+    padding: 6rem 0 0 0; 
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 5%;
+    width: 100%;
+}
+
+.about-tag {
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.about-description {
+    max-width: 480px; 
+}
+
+.about-description p {
+    font-size: 0.95rem; 
+    line-height: 1.2; 
+    letter-spacing: 0.01em;
+    opacity: 0.85;
+}
+
+.inline-logo {
+    height: 38px; 
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    filter: invert(1); 
+}
+
+.underline-text {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+
+.about-bottom {
+    margin-top: auto;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.about-big-title {
+    font-family: 'VT323', monospace;
+    font-size: clamp(5rem, 25vw, 22rem);
+    line-height: 0.7; 
+    font-weight: 300; 
+    letter-spacing: -0.07em; 
+    text-transform: none; 
+    display: block;
+    margin-left: -0.08em;   
+    margin-bottom: -0.08em; 
+    white-space: normal; 
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+/* --- SCROLL REVEAL ANIMATION --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; } 
+.delay-2 { transition-delay: 0.2s; } 
+
+/* 6. Our Coffee Section */
+.coffee-section {
+    padding: 6rem 5%;
+    background-color: #fcfcfc; 
+    color: #000;
+    position: relative;
+    z-index: 5; 
+}
+
+.coffee-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.header-left h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 0.9;
+}
+
+.header-right {
+    max-width: 400px;
+    text-align: right;
+}
+
+.header-right p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+.coffee-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+.coffee-card {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #d1d1d1;
+    background-color: #fff; 
+    cursor: pointer;
+    overflow: hidden; 
+}
+
+.coffee-card:last-child { border-right: 1px solid #d1d1d1; }
+
+.product-image {
+    width: 100%;
+    height: 380px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    transition: background-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    transform: scale(1.25); 
+    transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.product-info {
+    padding: 1.2rem 1.2rem 4rem 1.2rem; 
+    text-align: left;
+    border-top: 1px solid #d1d1d1;
+    background-color: #fff; 
+    position: relative; 
+    z-index: 10;
+}
+
+.category-label {
+    display: block; 
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 4px; 
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.product-title {
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    color: #000;
+    margin-bottom: 5.5rem; 
+    text-transform: uppercase;
+    line-height: 0.9; 
+    letter-spacing: -0.04em; 
+}
+
+.product-title span {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 0.9rem;
+    color: #444;
+    font-weight: 600;
+    display: block;
+}
+
+.coffee-card:nth-child(1):hover .product-image { background-color: #689739; }
+.coffee-card:nth-child(2):hover .product-image { background-color: #181a19; }
+.coffee-card:nth-child(3):hover .product-image { background-color: #1783a7; }
+
+.coffee-card:hover .product-image img {
+    transform: scale(1.45); 
+}
+
+/* --- 6.5 Digerati Society Section --- */
+.society-section {
+    background-color: #000;
+    color: #fff;
+    padding: 8rem 5% 4rem 5%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.society-header-center {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.society-main-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 0.9;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.society-content-wrapper {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.elegant-line {
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    opacity: 0.15;
+}
+
+.image-slot {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    padding: 2.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    filter: grayscale(0%) brightness(0.9);
+    transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.image-slot img:hover {
+    filter: grayscale(0%) brightness(1.1);
+    transform: scale(1.03);
+}
+
+.society-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 4rem;
+    width: 100%;
+}
+
+.footer-left h3 {
+    font-size: clamp(1.2rem, 3vw, 2.2rem); 
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.footer-left h3 span {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    text-transform: none;
+    font-weight: 400;
+}
+
+.footer-right p {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    max-width: 380px;
+    color: #fff;
+    opacity: 0.7;
+    text-align: right;
+}
+
+/* --- 8. Main Footer Section --- */
+.main-footer {
+    background-color: #fff;
+    color: #000;
+    padding: 6rem 5% 2rem 5%;
+    font-family: 'Geist', sans-serif;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 6rem;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+    filter: none !important;
+}
+
+.footer-col h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    opacity: 0.3;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-col ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.3s;
+}
+
+.footer-col ul li a:hover {
+    opacity: 0.5;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.footer-bottom-left p {
+    font-size: 0.75rem;
+    opacity: 0.5;
+}
+
+.footer-bottom-right {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-bottom-right a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.footer-bottom-right a:hover {
+    opacity: 1;
+}
+
+/* 7. Responsive Design Update (FINAL MOBILE FIX) */
+@media (max-width: 768px) {
+    .navbar { height: 70px; }
+    .hamburger { display: flex; }
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        width: 75%;
+        background-color: #000;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 10%;
+        gap: 2.5rem;
+        transition: 0.5s;
+    }
+    .nav-links.active { left: 0; }
+    
+    /* Footer Top Mobile: Sejajar ke Samping */
+    .footer-top {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 4rem;
+    }
+
+    .footer-logo {
+        height: 35px; /* Perkecil logo biar muat sampingan */
+    }
+
+    .footer-col h4 {
+        font-size: 0.65rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer-col ul li a {
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    /* Footer Bottom Mobile: Sejajar ke Samping */
+    .footer-bottom {
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    .footer-bottom-left p {
+        font-size: 0.55rem;
+    }
+
+    .footer-bottom-right {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .footer-bottom-right a {
+        font-size: 0.55rem;
+        white-space: nowrap;
+    }
+}
+
+/* Hamburger Animation */
+.hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+.hamburger.toggle span:nth-child(2) { opacity: 0; }
+.hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
