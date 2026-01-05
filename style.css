@@ -133,12 +133,13 @@ body {
 
 /* --- 5.5 About Us Section --- */
 .about-section {
-    padding: 6rem 0 0 0; 
+    padding: 10rem 0 0 0; 
     background-color: #000;
     color: #fff;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
 }
@@ -186,7 +187,7 @@ body {
 }
 
 .about-bottom {
-    margin-top: auto;
+    margin-top: 4rem;
     width: 100%;
     padding: 0;
     display: flex;
@@ -519,7 +520,7 @@ body {
     opacity: 1;
 }
 
-/* 7. Responsive Design Update (FINAL MOBILE FIX) */
+/* 7. Responsive Design Update */
 @media (max-width: 768px) {
     .navbar { height: 70px; }
     .hamburger { display: flex; }
@@ -538,52 +539,66 @@ body {
     }
     .nav-links.active { left: 0; }
     
-    /* Footer Top Mobile: Sejajar ke Samping */
-    .footer-top {
+    /* --- ABOUT US MOBILE --- */
+    .about-section {
+        padding: 6rem 0 0 0;
+        min-height: 50vh; 
+    }
+
+    .about-top {
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: flex-start;
-        gap: 10px;
-        padding-bottom: 4rem;
-    }
-
-    .footer-logo {
-        height: 35px; /* Perkecil logo biar muat sampingan */
-    }
-
-    .footer-col h4 {
-        font-size: 0.65rem;
-        margin-bottom: 1rem;
-    }
-
-    .footer-col ul li a {
-        font-size: 0.7rem;
-        white-space: nowrap;
-    }
-
-    /* Footer Bottom Mobile: Sejajar ke Samping */
-    .footer-bottom {
-        flex-direction: row; 
-        justify-content: space-between;
-        align-items: center;
         gap: 0;
+        padding: 0 5%;
     }
 
-    .footer-bottom-left p {
-        font-size: 0.55rem;
+    .about-tag {
+        width: 30%;
+        min-width: 80px;
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+        padding-right: 15px;
     }
 
-    .footer-bottom-right {
-        flex-direction: row;
-        gap: 10px;
+    .about-description {
+        width: 70%;
+        max-width: none;
     }
 
-    .footer-bottom-right a {
-        font-size: 0.55rem;
-        white-space: nowrap;
+    .about-description p {
+        font-size: 0.82rem;
+        line-height: 1.1;
+        text-align: left;
     }
+
+    .about-bottom {
+        margin-top: 3rem; 
+    }
+
+    .about-big-title {
+        font-size: clamp(4rem, 20vw, 15rem);
+        /* PROPERTI BARU: Memaksa teks patah per kata (atas-bawah) */
+        word-spacing: 100vw; 
+    }
+
+    .inline-logo {
+        height: 24px;
+        margin-right: 5px;
+    }
+
+    /* --- COFFEE GRID MOBILE --- */
+    .coffee-grid { grid-template-columns: 1fr; }
+    .coffee-card { border-right: 1px solid #d1d1d1; border-bottom: 1px solid #d1d1d1; }
+    .product-title { font-size: 1.5rem; margin-bottom: 4rem; }
+
+    /* Footer Mobile */
+    .footer-top { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; gap: 10px; }
+    .footer-logo { height: 35px; }
+    .footer-col h4 { font-size: 0.65rem; }
+    .footer-col ul li a { font-size: 0.7rem; white-space: nowrap; }
+    .footer-bottom { flex-direction: row; justify-content: space-between; }
 }
 
 /* Hamburger Animation */
